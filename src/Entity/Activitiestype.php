@@ -21,11 +21,6 @@ class Activitiestype
      */
     private $activitiestype;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $sport;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -39,18 +34,6 @@ class Activitiestype
     public function setActivitiestype(string $activitiestype): self
     {
         $this->activitiestype = $activitiestype;
-
-        return $this;
-    }
-
-    public function getSport(): ?string
-    {
-        return $this->sport;
-    }
-
-    public function setSport(string $sport): self
-    {
-        $this->sport = $sport;
 
         return $this;
     }
