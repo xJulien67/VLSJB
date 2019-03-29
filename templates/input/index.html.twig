@@ -4,4 +4,28 @@
 
 {% block body %}
     <h2>Nouvelle activité :</h2>
+
+    {{ form_start(formActivity) }}
+
+    <div class="form-group">
+        <label for="">Sport : </label>
+        {{ form_widget(formActivity.sport)}}
+        <br><label for="">Type d'activité : </label>
+        {{ form_widget(formActivity.activitiestype)}}
+        <br><label for="">Temps : </label>
+        {{ form_widget(formActivity.duration)}}
+        <br><label for="">Lieu : </label>
+        {{ form_widget(formActivity.place)}}
+        <br><label for="">Partenaires : </label>
+        {{ form_widget(formActivity.partner)}}
+        <br><label for="">Rythme moyen : </label>
+        {{ form_widget(formActivity.averagePace)}}
+        <br><label for="">Vitesse moyenne : </label>
+        {{ form_widget(formActivity.averageSpeed)}}
+        <br><label for="">Fréquence cardiaque : </label>
+        {{ form_widget(formActivity.heartRate)}}
+    </div>
+
+    {{ form_end(formActivity) }}
+
 {% endblock %}

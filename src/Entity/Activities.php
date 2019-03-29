@@ -58,7 +58,7 @@ class Activities
     private $heartRate;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\ActivitiesType", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Activitiestype", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $activitiestype;
@@ -68,12 +68,12 @@ class Activities
         return $this->id;
     }
 
-    public function getSport(): ?Sports
+    public function getSport(): ?sport
     {
         return $this->sport;
     }
 
-    public function setSport(Sports $sport): self
+    public function setSport(sport $sport): self
     {
         $this->sport = $sport;
 
@@ -164,12 +164,12 @@ class Activities
         return $this;
     }
 
-    public function getActivitiestype(): ?ActivitiesTypes
+    public function getActivitiestype(): ?Activitiestype
     {
         return $this->activitiestype;
     }
 
-    public function setActivitiestype(ActivitiesTypes $activitiestype): self
+    public function setActivitiestype(Activitiestype $activitiestype): self
     {
         $this->activitiestype = $activitiestype;
 
