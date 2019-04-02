@@ -17,7 +17,7 @@ class Activities
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Sports", inversedBy="distance", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sports", inversedBy="distance", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $sport;

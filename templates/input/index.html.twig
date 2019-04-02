@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme formActivity 'bootstrap_4_layout.html.twig' %}
+
 {% block title %}Hello InputController!{% endblock %}
 
 {% block body %}
@@ -7,24 +9,18 @@
 
     {{ form_start(formActivity) }}
 
-    <div class="form-group">
-        <label for="">Sport : </label>
-        {{ form_widget(formActivity.sport)}}
-        <br><label for="">Type d'activité : </label>
-        {{ form_widget(formActivity.activitiestype)}}
-        <br><label for="">Temps : </label>
-        {{ form_widget(formActivity.duration)}}
-        <br><label for="">Lieu : </label>
-        {{ form_widget(formActivity.place)}}
-        <br><label for="">Partenaires : </label>
-        {{ form_widget(formActivity.partner)}}
-        <br><label for="">Rythme moyen : </label>
-        {{ form_widget(formActivity.averagePace)}}
-        <br><label for="">Vitesse moyenne : </label>
-        {{ form_widget(formActivity.averageSpeed)}}
-        <br><label for="">Fréquence cardiaque : </label>
-        {{ form_widget(formActivity.heartRate)}}
-    </div>
+    {{ form_row(formActivity.sport, {'attr' : {'placeholder' : "Type de sport"}}) }}
+    {{ form_row(formActivity.activitiestype, {'attr' : {'placeholder' : 'Type d\'activité'}}) }}
+    {{ form_row(formActivity.duration) }}
+    {{ form_row(formActivity.distance, {'attr' : {'placeholder' : 'Distance'}}) }}
+    {{ form_row(formActivity.place, {'attr' : {'placeholder' : 'Lieu'}}) }}
+    {{ form_row(formActivity.partner, {'attr' : {'placeholder' : 'Partenaires de course'}}) }}
+    {{ form_row(formActivity.averagePace, {'attr' : {'placeholder' : 'Rythm moyen'}}) }}
+    {{ form_row(formActivity.averageSpeed, {'attr' : {'placeholder' : 'Vitesse moyenne'}}) }}
+    {{ form_row(formActivity.heartRate, {'attr' : {'placeholder' : 'Rythme cardiaque'}}) }}
+    
+
+    <button type="submit" class="btn btn-success">Enregistrer</button>
 
     {{ form_end(formActivity) }}
 

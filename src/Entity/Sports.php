@@ -22,7 +22,7 @@ class Sports
     private $sportname;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Activities", mappedBy="sport", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Activities", mappedBy="sport", cascade={"persist", "remove"})
      */
     private $distance;
 
