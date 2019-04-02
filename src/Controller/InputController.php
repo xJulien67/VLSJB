@@ -8,8 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Form\Extension\Core\Type\TextType; 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use App\Entity\Activities;
-use App\Repository\ActivitiesRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Activity;
+use App\Entity\Sport;
+use App\Repository\ActivityRepository;
 
 class InputController extends AbstractController
 {
@@ -18,11 +20,11 @@ class InputController extends AbstractController
      */
     public function index(Request $request, ObjectManager $manager)
     {
-        $activity = new Activities();
+        $activity = new Activity();
 
         $form = $this->createFormBuilder($activity)
-                     ->add('sport')
-                     ->add('activitiestype')
+                     ->add('sport', EntityType::class, array('class' => Sport::class))
+                     ->add('activitytype')
                      ->add('duration')
                      ->add('distance')
                      ->add('place')

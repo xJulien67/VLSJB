@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Sports;
+use App\Entity\Sport;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Sports|null find($id, $lockMode = null, $lockVersion = null)
- * @method Sports|null findOneBy(array $criteria, array $orderBy = null)
- * @method Sports[]    findAll()
- * @method Sports[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Sport|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Sport|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Sport[]    findAll()
+ * @method Sport[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SportsRepository extends ServiceEntityRepository
+class SportRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Sports::class);
+        parent::__construct($registry, Sport::class);
     }
 
     // /**
-    //  * @return Sports[] Returns an array of Sports objects
+    //  * @return Sport[] Returns an array of Sport objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SportsRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Sports
+    public function findOneBySomeField($value): ?Sport
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

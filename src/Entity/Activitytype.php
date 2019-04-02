@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ActivitiestypeRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ActivitytypeRepository")
  */
-class Activitiestype
+class Activitytype
 {
     /**
      * @ORM\Id()
@@ -19,27 +19,27 @@ class Activitiestype
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $activitiestype;
+    private $activitytype;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getActivitiestype(): ?string
+    public function getActivitytype(): ?string
     {
-        return $this->activitiestype;
+        return $this->activitytype;
     }
 
-    public function setActivitiestype(string $activitiestype): self
+    public function setActivitytype(string $activitytype): self
     {
-        $this->activitiestype = $activitiestype;
+        $this->activitytype = $activitytype;
 
         return $this;
     }
 
     public function __toString()
     {
-        return $this->getActivitiestype();
+        return $this->getActivitytype();
     }
 }

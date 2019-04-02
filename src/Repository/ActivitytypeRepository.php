@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Activities;
+use App\Entity\Activitytype;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Activities|null find($id, $lockMode = null, $lockVersion = null)
- * @method Activities|null findOneBy(array $criteria, array $orderBy = null)
- * @method Activities[]    findAll()
- * @method Activities[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Activitytype|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Activitytype|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Activitytype[]    findAll()
+ * @method Activitytype[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ActivitiesRepository extends ServiceEntityRepository
+class ActivitytypeRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Activities::class);
+        parent::__construct($registry, Activitytype::class);
     }
 
     // /**
-    //  * @return Activities[] Returns an array of Activities objects
+    //  * @return Activitytype[] Returns an array of Activitytype objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ActivitiesRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Activities
+    public function findOneBySomeField($value): ?Activitytype
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

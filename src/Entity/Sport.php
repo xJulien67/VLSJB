@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\SportsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\SportRepository")
  */
-class Sports
+class Sport
 {
     /**
      * @ORM\Id()
@@ -22,7 +22,7 @@ class Sports
     private $sportname;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Activities", mappedBy="sport", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Activity", mappedBy="sport", cascade={"persist", "remove"})
      */
     private $distance;
 
@@ -43,12 +43,12 @@ class Sports
         return $this;
     }
 
-    public function getDistance(): ?Activities
+    public function getDistance(): ?Activity
     {
         return $this->distance;
     }
 
-    public function setDistance(Activities $distance): self
+    public function setDistance(Activity $distance): self
     {
         $this->distance = $distance;
 

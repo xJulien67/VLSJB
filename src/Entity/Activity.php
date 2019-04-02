@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ActivitiesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ActivityRepository")
  */
-class Activities
+class Activity // Activity
 {
     /**
      * @ORM\Id()
@@ -17,7 +17,7 @@ class Activities
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Sports", inversedBy="distance", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sport", inversedBy="distance", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $sport;
@@ -58,10 +58,10 @@ class Activities
     private $heartRate;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Activitiestype", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Activitytype", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $activitiestype;
+    private $activitytype;
 
     public function getId(): ?int
     {
@@ -164,14 +164,14 @@ class Activities
         return $this;
     }
 
-    public function getActivitiestype(): ?Activitiestype
+    public function getActivitytype(): ?Activitytype
     {
-        return $this->activitiestype;
+        return $this->activitytype;
     }
 
-    public function setActivitiestype(Activitiestype $activitiestype): self
+    public function setActivitytype(Activitytype $activitytype): self
     {
-        $this->activitiestype = $activitiestype;
+        $this->activitytype = $activitytype;
 
         return $this;
     }
