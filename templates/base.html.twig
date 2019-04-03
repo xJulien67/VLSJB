@@ -131,46 +131,6 @@ ul ul a {
 
 <body>
 
-<<<<<<< HEAD
-  <div id="content">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-
-              <button type="button" id="sidebarCollapse" class="btn btn-info">
-                  <i class="fas fa-align-left"></i>
-                  <span>Menu</span>
-              </button>
-
-          </div>
-      </nav>
-  </div>
-
-  <div class="wrapper">
-    <!-- Sidebar -->
-    <nav id="sidebar">
-        <ul class="list-unstyled components">
-            <li>
-                <a href="{{ path('index') }}">Accueil</a>
-            </li>
-            <li>
-                <a href="{{ path('activity_index') }}">Flux d'activités</a>
-            </li>
-            <li>
-                <a href="{{ path('dashboard') }}">Dashboard</a>
-            </li>
-            <li>
-                <a href="{{ path('recap') }}">Récapitulatif</a>
-            </li>
-            <li>
-                <a href="{{ path('input') }}">Nouvelle activité</a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="container">
-            {% block body %}{% endblock %}
-            {% block javascripts %}{% endblock %}
-=======
     <div id="content">
 
         <div class="wrapper">
@@ -181,7 +141,7 @@ ul ul a {
                         <a href="{{ path('index') }}">Accueil</a>
                     </li>
                     <li>
-                        <a href="{{ path('activityflow') }}">Flux d'activités</a>
+                        <a href="{{ path('activity_index') }}">Flux d'activités</a>
                     </li>
                     <li>
                         <a href="{{ path('dashboard') }}">Dashboard</a>
@@ -214,7 +174,6 @@ ul ul a {
                     {% block javascripts %}{% endblock %}
                 </div>
             </div>
->>>>>>> 1f1a68771c2322980389e089c97abc536b1055b0
         </div>
     </div>
 
