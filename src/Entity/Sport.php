@@ -43,23 +43,6 @@ class Sport
         return $this;
     }
 
-    public function getDistance(): ?Activity
-    {
-        return $this->distance;
-    }
-
-    public function setDistance(Activity $distance): self
-    {
-        $this->distance = $distance;
-
-        // set the owning side of the relation if necessary
-        if ($this !== $distance->getSport()) {
-            $distance->setSport($this);
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->getSportname();
