@@ -58,7 +58,7 @@ class Activity // Activity
     private $heartRate;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Activitytype", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Activitytype", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $activitytype;

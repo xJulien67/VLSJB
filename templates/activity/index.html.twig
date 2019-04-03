@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activity index{% endblock %}
+
+{% block body %}
+    <h1>Flux d'activités </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Distance(km)</th>
+                <th>Date - durée</th>
+                <th>Lieu</th>
+                <th>Partenaire</th>
+                <th>Rythme moyen</th>
+                <th>Vitesse moy</th>
+                <th>Fréq cardiaque</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activity in activities %}
+            <tr>
+                <td>{{ activity.distance }}</td>
+                <td>{{ activity.duration ? activity.duration|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ activity.place }}</td>
+                <td>{{ activity.partner }}</td>
+                <td>{{ activity.averagePace }}</td>
+                <td>{{ activity.averageSpeed }}</td>
+                <td>{{ activity.heartRate }}</td>
+                <td>
+                    <a href="{{ path('activity_show', {'id': activity.id}) }}">voir</a>
+                    <a href="{{ path('activity_edit', {'id': activity.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- <a href="{{ path('activity_new') }}">Create new</a> -->
+{% endblock %}
