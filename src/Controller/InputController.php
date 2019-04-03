@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Activity;
 use App\Entity\Sport;
+use App\Form\ActivityType;
 use App\Repository\ActivityRepository;
 
 class InputController extends AbstractController
@@ -21,19 +22,10 @@ class InputController extends AbstractController
     public function index(Request $request, ObjectManager $manager)
     {
         $activity = new Activity();
-
-        $form = $this->createFormBuilder($activity)
-                     ->add('sport', EntityType::class, array('class' => Sport::class))
-                     ->add('activitytype')
-                     ->add('duration')
-                     ->add('distance')
-                     ->add('place')
-                     ->add('partner')
-                     ->add('averagePace')
-                     ->add('averageSpeed')
-                     ->add('heartRate')
-                     ->getForm();
         
+        //création d'un formulaire avec make:form et on vient récupérer la class du fichier ActivityType        
+        $form = $this->createForm(ActivityType::class, $activity);
+
         $form->handleRequest($request);
 
         if( $form->isSubmitted() && $form->isValid() ) {

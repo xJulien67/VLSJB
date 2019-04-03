@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ActivityRepository")
  */
-class Activity // Activity
+class Activity
 {
     /**
      * @ORM\Id()
@@ -23,7 +25,13 @@ class Activity // Activity
     private $sport;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 300,
+     *      minMessage = "La distance ne peut être pas null !",
+     *      maxMessage = "Une distance supérieure à 300km est impossible !"
+     * )
      */
     private $distance;
 
@@ -34,21 +42,33 @@ class Activity // Activity
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Minimum 1 caractère",
+     *      maxMessage = "Maximum 50 caractères"
+     * )
      */
     private $place;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $partner;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $averagePace;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 25,
+     *      minMessage = "La vitesse ne peut être pas null !",
+     *      maxMessage = "La vitesse ne peut pas être supérieure à 25km/h !"
+     * )
      */
     private $averageSpeed;
 
@@ -80,12 +100,12 @@ class Activity // Activity
         return $this;
     }
 
-    public function getDistance(): ?int
+    public function getDistance(): ?float
     {
         return $this->distance;
     }
 
-    public function setDistance(int $distance): self
+    public function setDistance(float $distance): self
     {
         $this->distance = $distance;
 
@@ -128,12 +148,12 @@ class Activity // Activity
         return $this;
     }
 
-    public function getAveragePace(): ?int
+    public function getAveragePace(): ?float
     {
         return $this->averagePace;
     }
 
-    public function setAveragePace(int $averagePace): self
+    public function setAveragePace(float $averagePace): self
     {
         $this->averagePace = $averagePace;
 
