@@ -27,16 +27,16 @@ class ActivityController extends AbstractController
 
 
     /**
-     * @Route("/test", name="activity_test", methods={"GET"})
+     * @Route("/home", name="activity_home", methods={"GET"})
      */
-    public function test(ActivityRepository $activityRepository): Response
+    public function home(ActivityRepository $activityRepository): Response
     {
-        return $this->render('activity/test.html.twig', [
+        return $this->render('activity/home.html.twig', [
             'activities' => $activityRepository->findAll(),
         ]);
     }
 
-    
+
 
     /**
      * @Route("/new", name="activity_new", methods={"GET","POST"})
