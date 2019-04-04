@@ -9,6 +9,7 @@
     {% for activity in activities %}
         var myActivity = new Object();
         
+        myActivity.id = "{{ activity.id }}";
         var strDate = "{{ activity.date|date('Y-m-d') }}";
         myActivity.strDate = strDate;
         myActivity.sport = "{{ activity.sport }}";
@@ -85,10 +86,10 @@
             //backgroundColor : 'yellow',
             //borderColor: 'black',
             textColor: 'white',
-            sportName : mySport
+            sportName : mySport,
+            url: arrayActivities[ii].id, //redirige vers la visualisation de l'activité quand on clique dessus
+            id : 'a'
         });
-
-        
     }
 
     calendar.render();//affiche le calendrier à l'écran

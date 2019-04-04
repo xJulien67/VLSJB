@@ -8,8 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-<<<<<<< HEAD
-=======
                 <th>Id</th>
                 <td>{{ activity.id }}</td>
             </tr>
@@ -18,7 +16,6 @@
                 <td>{{ activity.date ? activity.date|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
->>>>>>> aaf6be913249614c0029edb1447a2e2fd02b6c05
                 <th>Distance</th>
                 <td>{{ activity.distance }}</td>
             </tr>
@@ -36,7 +33,7 @@
             </tr>
             <tr>
                 <th>AveragePace</th>
-                <td>{{ activity.averagePace }}</td>
+                <td>{{ activity.averagePace ? activity.averagePace|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>AverageSpeed</th>
