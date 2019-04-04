@@ -8,43 +8,36 @@
     <table class="table">
         <tbody>
             <tr>
-<<<<<<< HEAD
-=======
-                <th>Id</th>
-                <td>{{ activity.id }}</td>
-            </tr>
-            <tr>
                 <th>Date</th>
-                <td>{{ activity.date ? activity.date|date('Y-m-d') : '' }}</td>
+                <td>{{ activity.date ? activity.duration|date('d/m/Y') : ''  }}</td>
             </tr>
             <tr>
->>>>>>> aaf6be913249614c0029edb1447a2e2fd02b6c05
                 <th>Distance</th>
-                <td>{{ activity.distance }}</td>
+                <td>{{ activity.distance }} km</td>
             </tr>
             <tr>
-                <th>Duration</th>
+                <th>Durée</th>
                 <td>{{ activity.duration ? activity.duration|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Place</th>
+                <th>Lieu</th>
                 <td>{{ activity.place }}</td>
             </tr>
             <tr>
-                <th>Partner</th>
+                <th>Partenaire(s)</th>
                 <td>{{ activity.partner }}</td>
             </tr>
             <tr>
-                <th>AveragePace</th>
-                <td>{{ activity.averagePace }}</td>
+                <th>Rythme moyen</th>
+                <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
             </tr>
             <tr>
-                <th>AverageSpeed</th>
-                <td>{{ activity.averageSpeed }}</td>
+                <th>Vitesse moyenne</th>
+                <td>{{ activity.averageSpeed }} km/h</td>
             </tr>
             <tr>
-                <th>HeartRate</th>
-                <td>{{ activity.heartRate }}</td>
+                <th>Fréquence cardiaque</th>
+                <td>{{ activity.heartRate }} bpm</td>
             </tr>
         </tbody>
     </table>

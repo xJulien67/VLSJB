@@ -8,28 +8,28 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Sport</th>
                 <th>Date</th>
+                <th>Sport</th>
                 <th>Distance</th>
                 <th>Durée</th>
+                <th>Rythme moy.</th>
                 <th>Lieu</th>
-                <th>Partenaire</th>
-                <th>Rythme moy</th>
-                <th>Vitesse moy</th>
-                <th>Fréq cardiaque</th>
+                <th>Partenaire(s)</th>
+                <th>Vitesse moy.</th>
+                <th>Fréq. cardiaque</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for activity in activities %}
             <tr>
+                <td>{{ activity.date ? activity.date|date('d/m/Y') : '' }}</td>
                 <td>{{ activity.sport }}</td>
-                <td>{{ activity.date ? activity.date|date('d-m-Y') : '' }}</td>
                 <td>{{ activity.distance }} km</td>
                 <td>{{ activity.duration ? activity.duration|date('H:i:s') : '' }}</td>
+                <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
                 <td>{{ activity.place }}</td>
                 <td>{{ activity.partner }}</td>
-                <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
                 <td>{{ activity.averageSpeed }} km/h</td>
                 <td>{{ activity.heartRate }} bpm</td>
                 <td>

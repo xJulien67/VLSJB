@@ -10,22 +10,23 @@
         {{ form_start(formActivity) }}
 
         <!--Type de sport-->
-        {{ form_label(formActivity.sport) }}
+        {{ form_label(formActivity.sport, 'Sport') }}
         {{ form_widget(formActivity.sport, {'attr' : {'placeholder' : "Type de sport"}}) }} 
         </br>
         <!--Type d'activité-->
-        {{ form_row(formActivity.activitytype, {'attr' : {'placeholder' : 'Type d\'activité'}}) }}
+        {{ form_label(formActivity.activitytype, 'Type d\'activité') }}
+        {{ form_widget(formActivity.activitytype, {'attr' : {'placeholder' : "Type d\'activité"}}) }}
         
         <!--Durée-->
-        {{ form_label(formActivity.duration) }}
+        {{ form_label(formActivity.duration, 'Durée') }}
         {{ form_widget(formActivity.duration) }}
         <br>
         <!--Date-->
-        {{ form_label(formActivity.date) }}
+        {{ form_label(formActivity.date, 'Date') }}
         {{ form_widget(formActivity.date) }} 
 
         </br>
-        {{ form_label(formActivity.distance) }}
+        {{ form_label(formActivity.distance, 'Distance') }}
     </div>
     <!--Distance-->
     <div class="row">
@@ -41,9 +42,11 @@
     <br>
     <!--Lieu ; Partenaires-->
     <div class="formActivity">
-        {{ form_row(formActivity.place, {'attr' : {'placeholder' : 'Lieu'}}) }}
-        {{ form_row(formActivity.partner, {'attr' : {'placeholder' : 'Partenaires de course'}}) }}
-        {{ form_label(formActivity.averagePace) }}
+        {{ form_label(formActivity.place, 'Lieu') }}
+        {{ form_widget(formActivity.place, {'attr' : {'placeholder' : 'Lieu'}}) }}
+        {{ form_label(formActivity.place, 'Partenaire(s)') }}
+        {{ form_widget(formActivity.partner, {'attr' : {'placeholder' : 'Partenaires de course'}}) }}
+        {{ form_label(formActivity.averagePace, 'Rythme moyen') }}
     </div>
     <!--Rythme moyen-->
     <div class="row">
@@ -56,7 +59,7 @@
     </div>
     <!--Vitesse moyenne-->
     <br>
-    {{ form_label(formActivity.averageSpeed) }}
+    {{ form_label(formActivity.averageSpeed, 'Vitesse moyenne') }}
     <div class="row">
         <div id="formActivity_text">
             {{ form_widget(formActivity.averageSpeed, {'attr' : {'placeholder' : 'Vitesse moyenne'}}) }}
@@ -66,10 +69,10 @@
         </div>
     </div>
     <!--Rythme cardiaque-->
-    {{ form_label(formActivity.heartRate) }}
+    {{ form_label(formActivity.heartRate, 'Fréquence cardiaque') }}
     <div class="row">
         <div id="formActivity_text">
-            {{ form_widget(formActivity.heartRate, {'attr' : {'placeholder' : 'Rythme cardiaque'}}) }}
+            {{ form_widget(formActivity.heartRate, {'attr' : {'placeholder' : 'Fréquence cardiaque'}}) }}
         </div>
         <div class="form_text">
             <p> bpm</p>
