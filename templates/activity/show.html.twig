@@ -3,13 +3,13 @@
 {% block title %}Activity{% endblock %}
 
 {% block body %}
-    <h1>Activity</h1>
+    <h2>{{ activity.sport }}</h2>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Date</th>
-                <td>{{ activity.date ? activity.duration|date('d/m/Y') : ''  }}</td>
+                <td>{{ activity.date ? activity.date|date('d/m/Y') : ''  }}</td>
             </tr>
             <tr>
                 <th>Distance</th>
@@ -43,7 +43,8 @@
     </table>
 
     <a href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a></br>
-    <a href="{{ path('activity_index') }}">Retour à la liste</a>
+    <a href="{{ path('activity_index') }}">Retour à la liste</a></br>
+    <a href="{{ path('activity_home') }}">Retour au calendrier</a>
 
 
     {{ include('activity/_delete_form.html.twig') }}
