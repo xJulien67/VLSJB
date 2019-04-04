@@ -12,6 +12,7 @@ class ActivityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('date')
             ->add('distance')
             ->add('duration')
             ->add('place')
