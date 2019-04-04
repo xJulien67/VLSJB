@@ -27,6 +27,7 @@
         </br>
         {{ form_label(formActivity.distance) }}
     </div>
+    <!--Distance-->
     <div class="row">
         <div id="formActivity_text">
             {{ form_widget(formActivity.distance, {
@@ -37,12 +38,25 @@
             <p> en km</p>
         </div>
     </div>
+    <br>
+    <!--Lieu ; Partenaires-->
     <div class="formActivity">
         {{ form_row(formActivity.place, {'attr' : {'placeholder' : 'Lieu'}}) }}
         {{ form_row(formActivity.partner, {'attr' : {'placeholder' : 'Partenaires de course'}}) }}
-        {{ form_row(formActivity.averagePace, {'attr' : {'placeholder' : 'Rythm moyen'}}) }}
-        {{ form_label(formActivity.averageSpeed) }}
+        {{ form_label(formActivity.averagePace) }}
     </div>
+    <!--Rythme moyen-->
+    <div class="row">
+        <div id="formActivity_text">
+            {{ form_widget(formActivity.averagePace, {'attr' : {'placeholder' : 'Rythme moyen'}}) }}
+        </div>
+        <div class="form_text">
+            <p> /km</p>
+        </div>
+    </div>
+    <!--Vitesse moyenne-->
+    <br>
+    {{ form_label(formActivity.averageSpeed) }}
     <div class="row">
         <div id="formActivity_text">
             {{ form_widget(formActivity.averageSpeed, {'attr' : {'placeholder' : 'Vitesse moyenne'}}) }}
@@ -51,11 +65,14 @@
             <p> km/h</p>
         </div>
     </div>
+    <!--Rythme cardiaque-->
+    {{ form_label(formActivity.heartRate) }}
     <div class="row">
         <div id="formActivity_text">
-            {{ form_label(formActivity.heartRate) }}
             {{ form_widget(formActivity.heartRate, {'attr' : {'placeholder' : 'Rythme cardiaque'}}) }}
-            <br>
+        </div>
+        <div class="form_text">
+            <p> bpm</p>
         </div>
     </div>
 

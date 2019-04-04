@@ -62,7 +62,7 @@ class Activity
     private $partner;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="time")
      */
     private $averagePace;
 
@@ -166,12 +166,12 @@ class Activity
         return $this;
     }
 
-    public function getAveragePace(): ?float
+    public function getAveragePace(): ?\DateTimeInterface
     {
         return $this->averagePace;
     }
 
-    public function setAveragePace(float $averagePace): self
+    public function setAveragePace(\DateTimeInterface $averagePace): self
     {
         $this->averagePace = $averagePace;
 
