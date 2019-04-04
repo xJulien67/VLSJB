@@ -9,13 +9,21 @@
     <div class="formActivity">
         {{ form_start(formActivity) }}
 
+        <!--Type de sport-->
         {{ form_label(formActivity.sport) }}
         {{ form_widget(formActivity.sport, {'attr' : {'placeholder' : "Type de sport"}}) }} 
         </br>
+        <!--Type d'activité-->
         {{ form_row(formActivity.activitytype, {'attr' : {'placeholder' : 'Type d\'activité'}}) }}
-
+        
+        <!--Durée-->
         {{ form_label(formActivity.duration) }}
-        {{ form_widget(formActivity.duration) }} 
+        {{ form_widget(formActivity.duration) }}
+        <br>
+        <!--Date-->
+        {{ form_label(formActivity.date) }}
+        {{ form_widget(formActivity.date) }} 
+
         </br>
         {{ form_label(formActivity.distance) }}
     </div>
