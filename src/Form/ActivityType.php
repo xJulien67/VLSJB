@@ -27,7 +27,11 @@ class ActivityType extends AbstractType
             ])
             ->add('place')
             ->add('partner')
-            ->add('averagePace')
+            ->add('averagePace', TimeType::Class, [
+                "with_seconds" => true,
+                "minutes" => range(2, 10),
+                "hours" => range(0,0),
+            ])
             ->add('averageSpeed')
             ->add('heartRate')
             ->add('sport')

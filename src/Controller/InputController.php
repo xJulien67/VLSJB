@@ -33,7 +33,7 @@ class InputController extends AbstractController
             $manager->persist($activity);
             $manager->flush();
 
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('activity_home');
         }
         
         return $this->render('input/index.html.twig', [

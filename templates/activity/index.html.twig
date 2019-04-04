@@ -29,7 +29,7 @@
                 <td>{{ activity.duration ? activity.duration|date('H:i:s') : '' }}</td>
                 <td>{{ activity.place }}</td>
                 <td>{{ activity.partner }}</td>
-                <td>{{ activity.averagePace }}</td>
+                <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
                 <td>{{ activity.averageSpeed }} km/h</td>
                 <td>{{ activity.heartRate }} bpm</td>
                 <td>
