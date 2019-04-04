@@ -10,16 +10,7 @@
         var myActivity = new Object();
         
         var strDate = "{{ activity.date|date('Y-m-d') }}";
-        //var dateM = {{ activity.date|date('m') }};
-        //var dateD = {{ activity.date|date('d') }};   
-        //var test = new Date(dateY + 'T00:00:00'); // will be in local time
-        
-        console.log("strDate: " + strDate);
-        /*console.log("dateY: " + dateY);
-        console.log("dateM: " + dateM);
-        console.log("dateD: " + dateD);*/
-
-        myActivity.date = strDate;
+        myActivity.strDate = strDate;
         myActivity.sport = "{{ activity.sport }}";
         myActivity.distance = {{ activity.distance }};
         arrayActivities.push(myActivity);
@@ -34,6 +25,35 @@
     
 </script>
 
+<script>
+    //Permet de donner la couleur sur le calendrier associée à un sport
+    function getSportColor(sportName)
+    {
+       var res = "black"; 
+       switch(sportName)
+       {
+            case 'Run':
+                res = "green";
+                break;
+            case 'Swim':
+                res = "blue";
+                break;
+            case 'Bike':
+                res = "yellow";
+                break;
+            case 'Muscu':
+                res = "brown";
+                break;
+            case 'Triathlon':
+                res = "red";
+                break;
+            case 'Swimrun':
+                res = "orange";
+                break;
+       }
+       return res;
+    }
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -49,20 +69,26 @@
     //Parcours le tableau contenant toutes les activités
     for(var ii=0;ii<arrayActivities.length;ii++)
     {   
-        //var strDate = "2019-04-07";
-        //var date = new Date(strDate + 'T00:00:00'); // will be in local time
         var myTitle = arrayActivities[ii].sport + " - " + arrayActivities[ii].distance + " km";
-        var myDate = new Date(arrayActivities[ii].date + 'T00:00:00');
-        //On ajoute chaque activités sur le calendrier
+        var myDate = new Date(arrayActivities[ii].strDate + 'T00:00:00');
+        //var myColor = "green";
+        var myColor = getSportColor(arrayActivities[ii].sport);
+        var mySport = arrayActivities[ii].sport;
+
+        //On ajoute chaque activité sur le calendrier
         calendar.addEvent(
         {
             title: myTitle,
             start: myDate,
-            allDay: true
+            allDay: true,
+            color: myColor,
+            sportName : mySport
         });
+
+        
     }
-    
-    calendar.render();
+
+    calendar.render();//affiche le calendrier à l'écran
   });//fin addEventListener
 </script>
 
