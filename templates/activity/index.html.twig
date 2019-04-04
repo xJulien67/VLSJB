@@ -14,7 +14,7 @@
                 <th>Durée</th>
                 <th>Lieu</th>
                 <th>Partenaire</th>
-                <th>Rythme moyen</th>
+                <th>Rythme moy</th>
                 <th>Vitesse moy</th>
                 <th>Fréq cardiaque</th>
                 <th>Actions</th>
@@ -33,8 +33,8 @@
                 <td>{{ activity.averageSpeed }} km/h</td>
                 <td>{{ activity.heartRate }} bpm</td>
                 <td>
-                    <a href="{{ path('activity_show', {'id': activity.id}) }}">Voir</a>
-                    <a href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
+                    <a href="{{ path('activity_show', {'id': activity.id}) }}">voir</a>
+                    <a href="{{ path('activity_edit', {'id': activity.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}

@@ -25,6 +25,19 @@ class ActivityController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/test", name="activity_test", methods={"GET"})
+     */
+    public function test(ActivityRepository $activityRepository): Response
+    {
+        return $this->render('activity/test.html.twig', [
+            'activities' => $activityRepository->findAll(),
+        ]);
+    }
+
+    
+
     /**
      * @Route("/new", name="activity_new", methods={"GET","POST"})
      */
