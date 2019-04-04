@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/activity")
+ * @Route("/")
  */
 class ActivityController extends AbstractController
 {
     /**
-     * @Route("/", name="activity_index", methods={"GET"})
+     * @Route("/activity/activities", name="activity_index", methods={"GET"})
      */
     public function index(ActivityRepository $activityRepository): Response
     {
@@ -27,7 +27,7 @@ class ActivityController extends AbstractController
 
 
     /**
-     * @Route("/home", name="activity_home", methods={"GET"})
+     * @Route("/", name="activity_home", methods={"GET"})
      */
     public function home(ActivityRepository $activityRepository): Response
     {
@@ -39,7 +39,7 @@ class ActivityController extends AbstractController
 
 
     /**
-     * @Route("/new", name="activity_new", methods={"GET","POST"})
+     * @Route("/activity/new", name="activity_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -62,7 +62,7 @@ class ActivityController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="activity_show", methods={"GET"})
+     * @Route("/activity/{id}", name="activity_show", methods={"GET"})
      */
     public function show(Activity $activity): Response
     {
@@ -72,7 +72,7 @@ class ActivityController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="activity_edit", methods={"GET","POST"})
+     * @Route("/activity/{id}/edit", name="activity_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Activity $activity): Response
     {
@@ -94,7 +94,7 @@ class ActivityController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="activity_delete", methods={"DELETE"})
+     * @Route("/activity/{id}", name="activity_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Activity $activity): Response
     {

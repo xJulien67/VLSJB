@@ -13,7 +13,7 @@ use App\Repository\ActivityRepository;
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/index", name="index")
      */
     public function index()
     {
@@ -21,7 +21,7 @@ class IndexController extends AbstractController
         //$activityRepository->findAll();
 
         return $this->render('index/index.html.twig', [
-            'title' => 'julien',
+            'title' => 'julien2',
         ]);
     }
 }
