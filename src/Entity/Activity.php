@@ -25,6 +25,11 @@ class Activity
     private $sport;
 
     /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+
+    /**
      * @ORM\Column(type="float")
      * @Assert\Range(
      *      min = 1,
@@ -34,9 +39,9 @@ class Activity
      * )
      */
     private $distance;
-
+    
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="time")
      */
     private $duration;
 
@@ -83,6 +88,7 @@ class Activity
      */
     private $activitytype;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -96,6 +102,18 @@ class Activity
     public function setSport(sport $sport): self
     {
         $this->sport = $sport;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

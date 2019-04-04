@@ -8,12 +8,23 @@
     <table class="table">
         <tbody>
             <tr>
+<<<<<<< HEAD
+=======
+                <th>Id</th>
+                <td>{{ activity.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ activity.date ? activity.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+>>>>>>> aaf6be913249614c0029edb1447a2e2fd02b6c05
                 <th>Distance</th>
                 <td>{{ activity.distance }}</td>
             </tr>
             <tr>
                 <th>Duration</th>
-                <td>{{ activity.duration ? activity.duration|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ activity.duration ? activity.duration|date('H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Place</th>

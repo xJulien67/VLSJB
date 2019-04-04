@@ -3,13 +3,14 @@
 {% block title %}Activity index{% endblock %}
 
 {% block body %}
-    <h1>Flux d'activités </h1>
+    <h1>Activity index</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Distance(km)</th>
-                <th>Date - durée</th>
+                <th>Date</th>
+                <th>Distance</th>
+                <th>Durée</th>
                 <th>Lieu</th>
                 <th>Partenaire</th>
                 <th>Rythme moyen</th>
@@ -21,21 +22,22 @@
         <tbody>
         {% for activity in activities %}
             <tr>
+                <td>{{ activity.date ? activity.date|date('d-m-Y') : '' }}</td>
                 <td>{{ activity.distance }}</td>
-                <td>{{ activity.duration ? activity.duration|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ activity.duration ? activity.duration|date('H:i:s') : '' }}</td>
                 <td>{{ activity.place }}</td>
                 <td>{{ activity.partner }}</td>
                 <td>{{ activity.averagePace }}</td>
                 <td>{{ activity.averageSpeed }}</td>
                 <td>{{ activity.heartRate }}</td>
                 <td>
-                    <a href="{{ path('activity_show', {'id': activity.id}) }}">voir</a>
-                    <a href="{{ path('activity_edit', {'id': activity.id}) }}">modifier</a>
+                    <a href="{{ path('activity_show', {'id': activity.id}) }}">Voir</a>
+                    <a href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">Aucun enregistrement trouvé</td>
+                <td colspan="10">Aucune activité trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
