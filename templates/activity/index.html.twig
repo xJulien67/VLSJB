@@ -22,7 +22,7 @@
         {% for activity in activities %}
             <tr>
                 <td>{{ activity.distance }}</td>
-                <td>{{ activity.duration ? activity.duration|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ activity.duration ? activity.duration|date('d-m-Y H:i:s') : '' }}</td>
                 <td>{{ activity.place }}</td>
                 <td>{{ activity.partner }}</td>
                 <td>{{ activity.averagePace }}</td>

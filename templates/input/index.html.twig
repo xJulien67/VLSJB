@@ -6,21 +6,52 @@
 
 {% block body %}
     <h2>Nouvelle activité :</h2>
+    <div class="formActivity">
+        {{ form_start(formActivity) }}
 
-    {{ form_start(formActivity) }}
+        {{ form_label(formActivity.sport) }}
+        {{ form_widget(formActivity.sport, {'attr' : {'placeholder' : "Type de sport"}}) }} 
+        </br>
+        {{ form_row(formActivity.activitytype, {'attr' : {'placeholder' : 'Type d\'activité'}}) }}
 
-    {{ form_row(formActivity.sport, {'attr' : {'placeholder' : "Type de sport"}}) }}
-    {{ form_row(formActivity.activitytype, {'attr' : {'placeholder' : 'Type d\'activité'}}) }}
-    {{ form_row(formActivity.duration) }}
-    {{ form_row(formActivity.distance, {'attr' : {'placeholder' : 'Distance'}}) }}
-    {{ form_row(formActivity.place, {'attr' : {'placeholder' : 'Lieu'}}) }}
-    {{ form_row(formActivity.partner, {'attr' : {'placeholder' : 'Partenaires de course'}}) }}
-    {{ form_row(formActivity.averagePace, {'attr' : {'placeholder' : 'Rythm moyen'}}) }}
-    {{ form_row(formActivity.averageSpeed, {'attr' : {'placeholder' : 'Vitesse moyenne'}}) }}
-    {{ form_row(formActivity.heartRate, {'attr' : {'placeholder' : 'Rythme cardiaque'}}) }}
-    
+        {{ form_label(formActivity.duration) }}
+        {{ form_widget(formActivity.duration) }} 
+        </br>
+        {{ form_label(formActivity.distance) }}
+    </div>
+    <div class="row">
+        <div id="formActivity_text">
+            {{ form_widget(formActivity.distance, {
+                'attr' : {'placeholder' : 'Distance'}
+            }) }}
+        </div>
+        <div class="form_text">
+            <p> en km</p>
+        </div>
+    </div>
+    <div class="formActivity">
+        {{ form_row(formActivity.place, {'attr' : {'placeholder' : 'Lieu'}}) }}
+        {{ form_row(formActivity.partner, {'attr' : {'placeholder' : 'Partenaires de course'}}) }}
+        {{ form_row(formActivity.averagePace, {'attr' : {'placeholder' : 'Rythm moyen'}}) }}
+        {{ form_label(formActivity.averageSpeed) }}
+    </div>
+    <div class="row">
+        <div id="formActivity_text">
+            {{ form_widget(formActivity.averageSpeed, {'attr' : {'placeholder' : 'Vitesse moyenne'}}) }}
+        </div>
+        <div class="form_text">
+            <p> km/h</p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="formActivity_text">
+            {{ form_label(formActivity.heartRate) }}
+            {{ form_widget(formActivity.heartRate, {'attr' : {'placeholder' : 'Rythme cardiaque'}}) }}
+            <br>
+        </div>
+    </div>
 
-    <button type="submit" class="btn btn-success">Enregistrer</button>
+    <button type="submit" class="btn btn-success" id="btn-save">Enregistrer</button>
 
     {{ form_end(formActivity) }}
 
