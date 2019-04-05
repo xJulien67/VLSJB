@@ -19,7 +19,7 @@ class Activity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Sport", inversedBy="distance", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Sport", inversedBy="distance")
      * @ORM\JoinColumn(nullable=false)
      */
     private $sport;
@@ -83,7 +83,7 @@ class Activity
     private $heartRate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Activitytype", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Activitytype")
      * @ORM\JoinColumn(nullable=false)
      */
     private $activitytype;

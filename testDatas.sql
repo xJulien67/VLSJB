@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `activitytype` (
 INSERT INTO `activitytype` (`id`, `activitytype`) VALUES
 (1, 'Entrainement'),
 (2, 'Compétition'),
+(3, 'Bike'),
 (4, 'Seuil'),
 (5, 'Fractionné');
 
