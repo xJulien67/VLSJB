@@ -8,8 +8,8 @@
     {{ include('activity/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
     <br>
-    
-    {{ include('activity/_delete_form.html.twig') }}
 
-    <a href="{{ path('activity_index') }}">Retour à la liste</a>
+    <!-- {{ include('activity/_delete_form.html.twig') }} -->
+
+    <a href="{{ path('activity_index') }}" class="btn btn-secondary" role="button" aria-pressed="true">Retour à la liste</a>
 {% endblock %}
