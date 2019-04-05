@@ -3,7 +3,19 @@
 {% block title %}Activity{% endblock %}
 
 {% block body %}
+
     <h2>{{ activity.sport }}</h2>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="w-100"></div>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav px-3">
+                             <a href="{{ path('activity_edit', {'id': activity.id}) }}" class="btn btn-primary" role="button" aria-pressed="true">Modifier</a>
+                        </ul>
+                        {{ include('activity/_delete_form.html.twig') }}
+                    </div>
+    </nav>
+
 
     <table class="table">
         <tbody>
@@ -42,10 +54,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('activity_edit', {'id': activity.id}) }}">Modifier</a></br>
-    <a href="{{ path('activity_index') }}">Retour à la liste</a></br>
-    <a href="{{ path('activity_home') }}">Retour au calendrier</a>
+    <a href="{{ path('activity_index') }}" class="btn btn-secondary" role="button" aria-pressed="true">Retour à la liste</a>
+    <a href="{{ path('activity_home') }}"  class="btn btn-secondary" role="button" aria-pressed="true">Retour au calendrier</a>
 
-
-    {{ include('activity/_delete_form.html.twig') }}
 {% endblock %}
