@@ -82,7 +82,7 @@ class ActivityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('activity_index', [
+            return $this->redirectToRoute('activity_show', [
                 'id' => $activity->getId(),
             ]);
         }
