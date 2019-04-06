@@ -4662,7 +4662,7 @@ Docs & License: https://fullcalendar.io/
         },
         weekLabel: 'W',
         allDayText: 'all-day',
-        eventLimitText: 'more',
+        eventLimitText: 'activités', //'more' avant modif
         noEventsMessage: 'No events to display'
     };
     function parseRawLocales(explicitRawLocales) {
