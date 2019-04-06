@@ -37,19 +37,37 @@
             </tr>
             <tr>
                 <th>Partenaire(s)</th>
-                <td>{{ activity.partner }}</td>
+                {% if activity.partner != null %}
+                    <td>{{ activity.partner }}</td>
+                {% else %}
+                    <td>-</td>
+                {% endif %}
             </tr>
             <tr>
+                <!-- -->
                 <th>Rythme moyen</th>
-                <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
+                {% if  activity.sport == "Run" %}
+                    <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
+                {% else %}
+                    <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /100m</td>
+                {% endif %}
             </tr>
             <tr>
+                <!-- -->
                 <th>Vitesse moyenne</th>
-                <td>{{ activity.averageSpeed }} km/h</td>
+                {% if  activity.sport == "Run" %}
+                    <td>{{ activity.averageSpeed }} km/h</td>
+                {% else %}
+                    <td>-</td>
+                {% endif %}
             </tr>
             <tr>
                 <th>Fréquence cardiaque</th>
-                <td>{{ activity.heartRate }} bpm</td>
+                {% if activity.heartRate != null %}
+                    <td>{{ activity.heartRate }} bpm</td>
+                {% else %}
+                    <td>-</td>
+                {% endif %}
             </tr>
         </tbody>
     </table>

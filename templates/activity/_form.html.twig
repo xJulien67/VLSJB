@@ -1,4 +1,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn btn-warning">{{ button_label|default('Save') }}</button>
+
+    <a href="{{ path('activity_show', { 'id': activity.id }) }}" class="btn btn-danger" role="button" aria-pressed="true">Annuler</a>
 {{ form_end(form) }}

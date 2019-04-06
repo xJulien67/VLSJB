@@ -29,9 +29,18 @@
                 <td>{{ activity.duration ? activity.duration|date('H:i:s') : '' }}</td>
                 <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
                 <td>{{ activity.place }}</td>
-                <td>{{ activity.partner }}</td>
+                {% if activity.partner != null %}
+                    <td>{{ activity.partner }}</td>
+                {% else %}
+                    <td>-</td>
+                {% endif %}
                 <td>{{ activity.averageSpeed }} km/h</td>
-                <td>{{ activity.heartRate }} bpm</td>
+                {% if activity.heartRate != null %}
+                    <td>{{ activity.heartRate }} bpm</td>
+                {% else %}
+                    <td>-</td>
+                {% endif %}
+                
                 <td>
                     <a href="{{ path('activity_show', {'id': activity.id}) }}">voir</a>
                     <a href="{{ path('activity_edit', {'id': activity.id}) }}">modifier</a>
