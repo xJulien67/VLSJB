@@ -24,7 +24,11 @@
                 <td>{{ activity.date ? activity.date|date('d/m/Y') : ''  }}</td>
             </tr>
             <tr>
-                <th>Distance</th>
+                <!-- La distance n'existe pas uniquement en muscu !-->
+                {% if activity.sport != "Muscu" %}
+                    <th>Distance</th>
+                {% endif %}
+
                 {% if  activity.sport == "Run" 
                     or activity.sport == "Bike"
                     or activity.sport == "Triathlon" 
@@ -33,9 +37,9 @@
                 {% elseif activity.sport == "Swim" %}
                     <td>{{ activity.distance }} m</td>
                 {% elseif activity.sport == "Muscu" %}
-                    <td>°°°</td>
+                    <!-- Pas de <td> car pas <th>Distance</th> -->
                 {% else %}
-                    <td>NR</td>
+                    <td>D NR</td>
                 {% endif %}
             </tr>
             <tr>
@@ -55,32 +59,43 @@
                 {% endif %}
             </tr>
             <tr>
-                <!-- -->
-                <th>Rythme moyen</th>
+                <!-- Le rythme moyen n'existe pas en muscu, triathlon et swimrun !-->
+                {% if activity.sport != "Muscu" 
+                  and activity.sport != "Triathlon" 
+                  and activity.sport != "Swimrun" %}
+                    <th>Rythme moyen</th>
+                {% endif %}
+                
                 {% if  activity.sport == "Run" or activity.sport == "Bike" %}
                     <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
                 {% elseif activity.sport == "Swim" %}
                     <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /100m</td>
                 {% elseif activity.sport == "Muscu"
-                       or activity.sport == "Triahtlon" 
+                       or activity.sport == "Triathlon" 
                        or activity.sport == "Swimrun" %}
-                    <td>°°°</td>
+                    <!-- Pas de <td> car pas <th>Rythme moyen</th> -->
                 {% else %}
-                    <td>NR</td>
+                    <td>R NR</td>
                 {% endif %}
             </tr>
             <tr>
-                <!-- -->
-                <th>Vitesse moyenne</th>
+                <!-- La vitesse moyenne n'existe pas en swim, muscu, triathlon et swimrun !-->
+                {% if activity.sport != "Swim" 
+                  and activity.sport != "Muscu" 
+                  and activity.sport != "Triathlon" 
+                  and activity.sport != "Swimrun" %}
+                    <th>Vitesse moyenne</th>
+                {% endif %}
+                
                 {% if  activity.sport == "Run" or activity.sport == "Bike" %}
                     <td>{{ activity.averageSpeed }} km/h</td>
                 {% elseif activity.sport == "Swim" 
                        or activity.sport == "Muscu"
                        or activity.sport == "Triathlon"
                        or activity.sport == "Swimrun" %}
-                     <td>°°°</td>
+                     <!-- Pas de <td> car pas <th>Vitesse moyenne</th> -->
                 {% else %}
-                    <td>NR</td>
+                    <td>V NR</td>
                 {% endif %}
             </tr>
             <tr>
