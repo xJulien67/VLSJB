@@ -25,7 +25,18 @@
             </tr>
             <tr>
                 <th>Distance</th>
-                <td>{{ activity.distance }} km</td>
+                {% if  activity.sport == "Run" 
+                    or activity.sport == "Bike"
+                    or activity.sport == "Triathlon" 
+                    or activity.sport == "Swimrun" %}
+                    <td>{{ activity.distance }} km</td>
+                {% elseif activity.sport == "Swim" %}
+                    <td>{{ activity.distance }} m</td>
+                {% elseif activity.sport == "Muscu" %}
+                    <td>°°°</td>
+                {% else %}
+                    <td>NR</td>
+                {% endif %}
             </tr>
             <tr>
                 <th>Durée</th>
@@ -46,19 +57,30 @@
             <tr>
                 <!-- -->
                 <th>Rythme moyen</th>
-                {% if  activity.sport == "Run" %}
+                {% if  activity.sport == "Run" or activity.sport == "Bike" %}
                     <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
-                {% else %}
+                {% elseif activity.sport == "Swim" %}
                     <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /100m</td>
+                {% elseif activity.sport == "Muscu"
+                       or activity.sport == "Triahtlon" 
+                       or activity.sport == "Swimrun" %}
+                    <td>°°°</td>
+                {% else %}
+                    <td>NR</td>
                 {% endif %}
             </tr>
             <tr>
                 <!-- -->
                 <th>Vitesse moyenne</th>
-                {% if  activity.sport == "Run" %}
+                {% if  activity.sport == "Run" or activity.sport == "Bike" %}
                     <td>{{ activity.averageSpeed }} km/h</td>
+                {% elseif activity.sport == "Swim" 
+                       or activity.sport == "Muscu"
+                       or activity.sport == "Triathlon"
+                       or activity.sport == "Swimrun" %}
+                     <td>°°°</td>
                 {% else %}
-                    <td>-</td>
+                    <td>NR</td>
                 {% endif %}
             </tr>
             <tr>
