@@ -20,12 +20,33 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Dernière activité</h5>
-                    <p class="card-text">{{lastActivity.sport }}</p>
+                   <!--  <p class="card-text">{{lastActivity.sport }}</p> -->
                     <p class="card-text">{{lastActivity.place }}</p>
                     <p class="card-text">{{ lastActivity.date|date('d/m/Y') }}</p>
-                    <p class="card-text">{{ lastActivity.distance }}</p>
+                    {% if lastActivity.sport == "Run" 
+                       or lastActivity.sport == "Bike" 
+                       or lastActivity.sport == "Triathlon"
+                       or lastActivity.sport == "Swimrun"%}
+                        <p class="card-text">{{ lastActivity.distance }} km</p>
+                    {% elseif activity.sport == "Swim" %}
+                        <p class="card-text">{{ lastActivity.distance }} m</p>
+                    {% elseif lastActivity.sport == "Muscu" %}
+                       <!-- pas de distance en muscu -->
+                    {% else %}     
+                       <p>D NR</p>
+                    {% endif %}
                     <p class="card-text">{{ lastActivity.duration|date('H:i:s') }}</p>
-                    <p class="card-text">{{ lastActivity.averagePace|date('i:s') }}</p>
+                    {% if lastActivity.sport == "Run" or lastActivity.sport == "Bike" %}
+                        <p class="card-text">{{ lastActivity.averagePace|date('i:s') }} /km</p>
+                    {% elseif lastActivity.sport == "Swim" %}
+                        <p class="card-text">{{ lastActivity.averagePace|date('i:s') }} /100m</p>
+                    {% elseif lastActivity.sport == "Muscu"
+                           or lastActivity.sport == "Triathlon" 
+                           or lastActivity.sport == "Swimrun" %}
+                        <!-- pas de rythme dans ces sports -->
+                    {% else %}
+                        <p>R NR</p>
+                    {% endif %}
                     <p class="card-text">{{ lastActivity.activityType }}</p>
                     
                     <a href="{{ path('activity_show', {'id': lastActivity.id}) }}" class="btn btn-primary"> Visualiser</a>
