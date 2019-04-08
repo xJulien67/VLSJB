@@ -60,7 +60,42 @@
 
                     <!-- 
                        - On récupère la date actuelle (dateNow) 
-                       - On créer 2 variables pour le cumuls des activités et de la distance sur le mois en    cours
+                       - On créer 2 variables pour le cumuls des activités et de la distance sur le mois en cours
+                    -->
+                    {% set dateNow = "now"|date("m/Y") %}
+                    {% set sumActivities = 0 %}
+                    {% set sumDistance = 0 %}
+                    {% for activity in activities %}
+                        {% if activity.date|date('m/Y') == dateNow %}
+                            {% set sumActivities = sumActivities + 1 %}
+                            {% set sumDistance = sumDistance + activity.distance %}
+                        {% endif %}
+                    {% endfor %}
+                    <p class="card-text">Nb activité(s): {{sumActivities}}</p>
+                    {% if lastActivity.sport == "Run" 
+                       or lastActivity.sport == "Bike" 
+                       or lastActivity.sport == "Triathlon"
+                       or lastActivity.sport == "Swimrun"%}
+                        <p class="card-text">Distance: {{sumDistance}} km</p>
+                    {% elseif lastActivity.sport == "Swim" %}
+                        <p class="card-text">Distance: {{sumDistance}} m</p>
+                    {% elseif lastActivity.sport == "Muscu" %}
+                       <!-- pas de distance en muscu -->
+                    {% else %}     
+                       <p>D NR</p>
+                    {% endif %}
+                    
+
+                </div>
+            </div>
+            <br>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Sur l'année</h5>
+
+                    <!-- 
+                       - On récupère la date actuelle (dateNow) 
+                       - On créer 2 variables pour le cumuls des activités et de la distance sur le mois en cours
                     -->
                     {% set dateNow = "now"|date("m/Y") %}
                     {% set sumActivities = 0 %}
