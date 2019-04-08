@@ -25,16 +25,52 @@
             <tr>
                 <td>{{ activity.date ? activity.date|date('d/m/Y') : '' }}</td>
                 <td>{{ activity.sport }}</td>
-                <td>{{ activity.distance }} km</td>
+               
+                {% if activity.sport == "Run" 
+                   or activity.sport == "Bike" 
+                   or activity.sport == "Triathlon"
+                   or activity.sport == "Swimrun"%}
+                     <td>{{ activity.distance }} km</td>
+                {% elseif activity.sport == "Swim" %}
+                     <td>{{ activity.distance }} m</td>
+                {% elseif activity.sport == "Muscu" %}
+                     <td>-</td>
+                {% else %}     
+                    <td>D NR</td>
+                {% endif %}
+
                 <td>{{ activity.duration ? activity.duration|date('H:i:s') : '' }}</td>
-                <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
+
+                {% if  activity.sport == "Run" or activity.sport == "Bike" %}
+                    <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /km</td>
+                {% elseif activity.sport == "Swim" %}
+                    <td>{{ activity.averagePace ? activity.averagePace|date('i:s') : ''}} /100m</td>
+                {% elseif activity.sport == "Muscu"
+                       or activity.sport == "Triathlon" 
+                       or activity.sport == "Swimrun" %}
+                    <td>-</td>
+                {% else %}
+                    <td>R NR</td>
+                {% endif %}
+
                 <td>{{ activity.place }}</td>
                 {% if activity.partner != null %}
                     <td>{{ activity.partner }}</td>
                 {% else %}
                     <td>-</td>
                 {% endif %}
-                <td>{{ activity.averageSpeed }} km/h</td>
+
+                {% if  activity.sport == "Run" or activity.sport == "Bike" %}
+                    <td>{{ activity.averageSpeed }} km/h</td>
+                {% elseif activity.sport == "Swim" 
+                       or activity.sport == "Muscu"
+                       or activity.sport == "Triathlon"
+                       or activity.sport == "Swimrun" %}
+                    <td>-</td>
+                {% else %}
+                    <td>V NR</td>
+                {% endif %}
+
                 {% if activity.heartRate != null %}
                     <td>{{ activity.heartRate }} bpm</td>
                 {% else %}
