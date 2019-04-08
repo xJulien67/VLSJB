@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Activity;
 use App\Form\ActivityType;
 use App\Repository\ActivityRepository;
+use App\Repository\SportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,25 +17,83 @@ use Symfony\Component\Routing\Annotation\Route;
 class ActivityController extends AbstractController
 {
     /**
-     * @Route("/activity/activities", name="activity_index", methods={"GET"})
-     */
-    public function index(ActivityRepository $activityRepository): Response
-    {
-        return $this->render('activity/index.html.twig', [
-            'activities' => $activityRepository->findAll(),
-        ]);
-    }
-
-
-    /**
      * @Route("/", name="activity_home", methods={"GET"})
      */
     public function home(ActivityRepository $activityRepository): Response
     {
+        //N'autorise pas l'accès si l'utilisateur n'est pas connecté
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $user = $this->getUser();//récupère l'utilisateur connecté
+        $userId = $user->getId();//récupère l'id de l'utilisateur connecté
+
+        //findAllByUserId() renvoie toutes les activités que l'utilisateur connecté possède
         return $this->render('activity/home.html.twig', [
-            'activities' => $activityRepository->findAll(),
+            //'activities' => $activityRepository->findAll(),
+            'activities' => $activityRepository->findAllByUserId($userId),
         ]);
     }
+
+    /**
+     * @Route("/activity/activities", name="activity_activities", methods={"GET"})
+     */
+    public function activities(ActivityRepository $activityRepository): Response
+    {
+        //N'autorise pas l'accès si l'utilisateur n'est pas connecté
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $user = $this->getUser();//récupère l'utilisateur connecté
+        $userId = $user->getId();//récupère l'id de l'utilisateur connecté
+        
+        //findAllByUserId() renvoie toutes les activités que l'utilisateur connecté possède
+        return $this->render('activity/activities.html.twig', [
+            //'activities' => $activityRepository->findAll(),
+            'activities' => $activityRepository->findAllByUserId($userId),
+        ]);
+    }
+
+    
+
+    /**
+     * @Route("/activity/recap", name="activity_recap", methods={"GET"})
+     */
+    public function recap(ActivityRepository $activityRepository, SportRepository $sportRepository): Response
+    {
+        //N'autorise pas l'accès si l'utilisateur n'est pas connecté
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $user = $this->getUser();//récupère l'utilisateur connecté
+        $userId = $user->getId();//récupère l'id de l'utilisateur connecté
+
+        return $this->render('activity/recap.html.twig', [
+            'activities' => $activityRepository->findAllByUserId($userId),
+            'sports' => $sportRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/activity/recap/{id}", name="activity_recap_sport", methods={"GET"})
+     */
+    public function recapSport(ActivityRepository $activityRepository, SportRepository $sportRepository, int $id): Response
+    {
+        //N'autorise pas l'accès si l'utilisateur n'est pas connecté
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $user = $this->getUser();//récupère l'utilisateur connecté
+        $userId = $user->getId();//récupère l'id de l'utilisateur connecté
+        //app.request.get('id');
+        //$request = $this->getRequest();
+        //$id = $request->attributes->get('id');
+        //$currentRoute = $request->attributes->get('_route');
+        
+
+        return $this->render('activity/recap_sport.html.twig', [
+            'activities' => $activityRepository->findByUserIdAndSportId($userId, $id), //$id est récupérer dans l'url (il s'agit du sportId)
+            'sports' => $sportRepository->findAll(),
+        ]);
+    }
+
+    
 
 
 
@@ -104,6 +163,6 @@ class ActivityController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('activity_index');
+        return $this->redirectToRoute('activity_activities');
     }
 }

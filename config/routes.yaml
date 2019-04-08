@@ -1,3 +1,7 @@
 activity_controller:
     path: /
     controller: App\Controller\ActivityController::home
+
+app_logout:
+  path: /logout
+  methods: GET

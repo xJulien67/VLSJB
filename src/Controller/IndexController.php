@@ -19,9 +19,11 @@ class IndexController extends AbstractController
     {
         $activity = new activity();
         //$activityRepository->findAll();
+        $user = $this->getUser();
+        $userId = $user->getId();
 
         return $this->render('index/index.html.twig', [
-            'title' => 'julien2',
+            'id' => $userId,
         ]);
     }
 }

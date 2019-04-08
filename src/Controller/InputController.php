@@ -21,11 +21,18 @@ class InputController extends AbstractController
      */
     public function index(Request $request, ObjectManager $manager)
     {
+        //N'autorise pas l'accès si l'utilisateur n'est pas connecté
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        
         $activity = new Activity();
+
+        //Une activité appartient à un utilisateur (celui connecté):
+        $user = $this->getUser(); 
+        $activity->setUser($user); 
         
         //création d'un formulaire avec make:form et on vient récupérer la class du fichier ActivityType        
         $form = $this->createForm(ActivityType::class, $activity);
-
+       
         $form->handleRequest($request);
 
         if( $form->isSubmitted() && $form->isValid() ) {

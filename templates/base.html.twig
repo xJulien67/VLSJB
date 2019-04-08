@@ -49,13 +49,13 @@ $(document).ready(function ()
                         <a href="{{ path('activity_home') }}">Accueil</a>
                     </li>
                     <li>
-                        <a href="{{ path('activity_index') }}">Flux d'activités</a>
+                        <a href="{{ path('activity_activities') }}">Flux d'activités</a>
                     </li>
                     <li>
                         <a href="{{ path('dashboard') }}">Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{ path('recap') }}">Récapitulatif</a>
+                        <a href="{{ path('activity_recap') }}">Récapitulatif</a>
                     </li>
                     <li>
                         <a href="{{ path('input') }}">Nouvelle activité</a>
@@ -70,11 +70,19 @@ $(document).ready(function ()
                     </button>
                     <div class="w-100"></div>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav px-3">
-                            <button type="button" class="btn btn-info" id="btn-logout">
-                                <span>Déconnexion</span>
-                            </button>
-                        </ul>
+
+                        <!-- Si l'utilisateur est connecté -->
+                        {% if app.user %}
+                            <ul class="navbar-nav px-3">
+                                <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
+                            </ul>
+                        {% else %}
+                            <ul class="navbar-nav px-3">
+                                <a class="btn btn-primary" href="{{ path('app_login') }}">Se connecter</a>
+                            </ul>
+                        {% endif %}
+                        
+
                     </div>
                 </nav>
                 <div class="container">

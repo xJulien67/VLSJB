@@ -11,6 +11,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Activity|null findOneBy(array $criteria, array $orderBy = null)
  * @method Activity[]    findAll()
  * @method Activity[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Activity[]    findAllByUserId($userId)
+ * @method Activity[]    findByUserIdAndSportId($userId, $sportId)
  */
 class ActivityRepository extends ServiceEntityRepository
 {
@@ -18,6 +20,50 @@ class ActivityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Activity::class);
     }
+
+    // /**
+    //  * @return Activity[] Returns an array of Activity objects
+    //  */
+    public function findAllByUserId($userId)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.user = :val')
+            ->setParameter('val', $userId)
+            ->orderBy('a.date', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
+    // /**
+    //  * @return Activity[] Returns an array of Activity objects
+    //  */
+    public function findByUserIdAndSportId($userId, $sportId)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.user = :userId')
+            ->andWhere('a.sport = :sportId')
+            ->setParameter('userId', $userId)
+            ->setParameter('sportId', $sportId)
+            ->orderBy('a.date', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+
+        /*
+        En utilisant cela, il n'y a pas le jointure avec autres tables
+        Donc après on utilise activity.sport_id et non activity_sport
+        $conn = $this->getEntityManager()->getConnection();
+        $sql ="SELECT * FROM activity WHERE `user_id` = ' .$userId.'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+        */
+    }
+
+
 
     // /**
     //  * @return Activity[] Returns an array of Activity objects
