@@ -40,8 +40,11 @@ $(document).ready(function ()
 
 <body>
     <div id="content">
-
+            
         <div class="wrapper">
+
+            <!-- Si l'utilisateur est connecté -->
+            {% if app.user %}
             <!-- Sidebar -->
             <nav id="sidebar">
                 <ul class="list-unstyled components">
@@ -62,6 +65,7 @@ $(document).ready(function ()
                     </li>
                 </ul>
             </nav>
+            
 
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -70,21 +74,13 @@ $(document).ready(function ()
                     </button>
                     <div class="w-100"></div>
                     <div class="collapse navbar-collapse" id="navbarNav">
-
-                        <!-- Si l'utilisateur est connecté -->
-                        {% if app.user %}
                             <ul class="navbar-nav px-3">
                                 <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
                             </ul>
-                        {% else %}
-                            <ul class="navbar-nav px-3">
-                                <a class="btn btn-primary" href="{{ path('app_login') }}">Se connecter</a>
-                            </ul>
-                        {% endif %}
-                        
-
                     </div>
                 </nav>
+            {% endif %}
+
                 <div class="container">
                     {% block body %}{% endblock %}
                     {% block javascripts %}{% endblock %}
