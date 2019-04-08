@@ -78,8 +78,12 @@ $(document).ready(function ()
                     <div class="w-100"></div>
                     <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav px-3">
+                               <a class="btn btn-dark" href="{{ path('user_edit_profile', {'id': app.user.id}) }}">Mon compte</a> 
+                            </ul>
+                            <ul class="navbar-nav px-3">
                                 <a class="btn btn-danger" href="{{ path('app_logout') }}">Déconnexion</a>
                             </ul>
+                            
                     </div>
                 </nav>
             {% endif %}

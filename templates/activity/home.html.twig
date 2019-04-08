@@ -8,12 +8,12 @@
     //Remplissage du tableau
     {% for activity in activities %}
         var myActivity = new Object();
-        
         myActivity.id = "{{ activity.id }}";
         var strDate = "{{ activity.date|date('Y-m-d') }}";
         myActivity.strDate = strDate;
         myActivity.sport = "{{ activity.sport }}";
         myActivity.distance = {{ activity.distance }};
+        myActivity.duration = "{{ activity.duration|date('H:i:s') }}";
         arrayActivities.push(myActivity);
     {% endfor %} 
 </script>

@@ -7,13 +7,17 @@
       //defaultDate: '2019-04-12',
       defaultDate: Date.now(),
       editable: false, //si on peut on non déplacer les éléments sur le calendrier
-      eventLimit: true // allow "more" link when too many events
+      eventLimit: true, // allow "more" link when too many events
+      firstDay: 1,
+      //height: 650 //taille du calendrier
     });
 
     //Parcours le tableau contenant toutes les activités
     for(var ii=0;ii<arrayActivities.length;ii++)
     {   
-        var myTitle = arrayActivities[ii].sport + " - " + arrayActivities[ii].distance + " km";
+        var myTitle = arrayActivities[ii].sport + "  " 
+                    + getDistanceUnitAndFormat(arrayActivities[ii].distance, arrayActivities[ii].sport);
+                    + arrayActivities[ii].duration + " ";
         var myDate = new Date(arrayActivities[ii].strDate + 'T00:00:00');
         var myColor = getSportColor(arrayActivities[ii].sport);
         var mySport = arrayActivities[ii].sport;

@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\UserTypeEditProfile;
+use App\Form\UserTypeFromAdmin;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -69,7 +71,7 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserTypeFromAdmin::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -85,6 +87,34 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+    /**
+     * @Route("/user/{id}/editProfile", name="user_edit_profile", methods={"GET","POST"})
+     */
+    public function editProfile(Request $request, User $user): Response
+    {
+        $currentUser = $this->getUser();//récupère l'utilisateur connecté
+
+        $form = $this->createForm(UserTypeEditProfile::class, $currentUser);
+        $form->handleRequest($request);
+
+        //Si données OK quand on clique sur Update
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('user_index', [
+                'id' => $user->getId(),
+            ]);
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    
 
     /**
      * @Route("/admin/user/{id}", name="user_delete", methods={"DELETE"})
