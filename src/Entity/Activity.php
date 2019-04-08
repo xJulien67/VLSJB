@@ -31,12 +31,6 @@ class Activity
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\Range(
-     *      min = 1,
-     *      max = 300,
-     *      minMessage = "La distance ne peut être pas null !",
-     *      maxMessage = "Une distance supérieure à 300km est impossible !"
-     * )
      */
     private $distance;
     
@@ -47,12 +41,6 @@ class Activity
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Minimum 1 caractère",
-     *      maxMessage = "Maximum 50 caractères"
-     * )
      */
     private $place;
 
@@ -68,11 +56,6 @@ class Activity
 
     /**
      * @ORM\Column(type="float")
-     * @Assert\Range(
-     *      min = 1,
-     *      max = 25,
-     *      minMessage = "La vitesse ne peut être pas null !",
-     *      maxMessage = "La vitesse ne peut pas être supérieure à 25km/h !"
      * )
      */
     private $averageSpeed;
