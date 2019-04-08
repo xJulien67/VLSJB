@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Hello InputController!{% endblock %}
+
+{% block body %}
+    <h2>Nouvelle activité :</h2>
+    <div class="form">
+        {{ form_start(form) }}
+
+        <!--Type de sport-->
+        {{ form_label(form.username, 'Sport') }}
+        {{ form_widget(form.username, {'attr' : {'placeholder' : "Type de sport"}}) }} 
+        </br>
+        
+       
+
+        <!--Date-->
+        {{ form_label(form.password, 'Date') }}
+        {{ form_widget(form.password) }} 
+
+        </br>
+    </div>
+
+    <button type="submit" class="btn btn-success" id="btn-save">Enregistrer</button>
+
+    {{ form_end(form) }}
+
+{% endblock %}

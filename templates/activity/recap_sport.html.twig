@@ -28,7 +28,7 @@
                        or lastActivity.sport == "Triathlon"
                        or lastActivity.sport == "Swimrun"%}
                         <p class="card-text">{{ lastActivity.distance }} km</p>
-                    {% elseif activity.sport == "Swim" %}
+                    {% elseif lastActivity.sport == "Swim" %}
                         <p class="card-text">{{ lastActivity.distance }} m</p>
                     {% elseif lastActivity.sport == "Muscu" %}
                        <!-- pas de distance en muscu -->
@@ -72,7 +72,19 @@
                         {% endif %}
                     {% endfor %}
                     <p class="card-text">Nb activité(s): {{sumActivities}}</p>
-                    <p class="card-text">Distance: {{sumDistance}}</p>
+                    {% if lastActivity.sport == "Run" 
+                       or lastActivity.sport == "Bike" 
+                       or lastActivity.sport == "Triathlon"
+                       or lastActivity.sport == "Swimrun"%}
+                        <p class="card-text">Distance: {{sumDistance}} km</p>
+                    {% elseif lastActivity.sport == "Swim" %}
+                        <p class="card-text">Distance: {{sumDistance}} m</p>
+                    {% elseif lastActivity.sport == "Muscu" %}
+                       <!-- pas de distance en muscu -->
+                    {% else %}     
+                       <p>D NR</p>
+                    {% endif %}
+                    
 
                 </div>
             </div>
